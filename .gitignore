@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.env/
+
+# HuggingFace cache
+.cache/
+
+# Logs
+*.log
+
+# Model checkpoints
+checkpoints/
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# Evaluation outputs
+evaluation_results/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# WandB
+wandb/
