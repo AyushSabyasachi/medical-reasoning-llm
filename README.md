@@ -73,46 +73,70 @@ reasoning...
 <answer>
 final response
 </answer>
+```
+
+---
 
 ### Experiment 2 — No-CoT Fine-Tuning
 
 The assistant is trained to generate concise direct answers without explicit reasoning traces.
 
-### Example Training Command
-CoT Training
+---
+
+## Example Training Commands
+
+### CoT Training
+
+```bash
 python phase2_train.py \
   --experiment exp1_cot \
   --output_dir ./checkpoints/exp1_cot \
   --batch_size 2 \
   --max_samples 5000
+```
 
-No-CoT Training
+### No-CoT Training
+
+```bash
 python phase2_train.py \
   --experiment exp2_no_cot \
   --output_dir ./checkpoints/exp2_no_cot \
   --batch_size 2 \
   --max_samples 5000
+```
 
-Example Evaluation Command
+---
+
+## Example Evaluation Command
+
+```bash
 python phase3_evaluate.py \
     --exp1_dir ./checkpoints/exp1_cot/final_adapter \
     --exp2_dir ./checkpoints/exp2_no_cot/final_adapter \
     --base_model Qwen/Qwen2.5-3B-Instruct \
     --output_dir ./evaluation_results \
     --num_eval_samples 200
+```
 
-Evaluation Metrics
+---
+
+## Evaluation Metrics
 
 The evaluation framework measures:
 
-Exact Match (EM)
-ROUGE-L
-BERTScore
-Hallucination rate
-Response latency
-Token generation overhead
-Reasoning quality comparison
+- Exact Match (EM)
+- ROUGE-L
+- BERTScore
+- Hallucination rate
+- Response latency
+- Token generation overhead
+- Reasoning quality comparison
 
+---
+
+## Repository Structure
+
+```text
 medical-reasoning-llm/
 │
 ├── phase2_train.py
@@ -123,26 +147,39 @@ medical-reasoning-llm/
 ├── checkpoints/
 ├── evaluation_results/
 └── reports/
+```
 
-Key Learnings
-CoT fine-tuning improves reasoning transparency but increases computational complexity.
-Long reasoning traces significantly increase token generation overhead.
-Stable QLoRA training requires careful learning rate and gradient stabilization.
-No-CoT models are computationally cheaper and more numerically stable.
-Future Improvements
-Multi-GPU distributed training
-RLHF alignment
-Gradio/Streamlit inference UI
-HuggingFace Spaces deployment
-Better hallucination detection
-Medical benchmark evaluation
-Quantitative reasoning analysis
-Disclaimer
+---
+
+## Key Learnings
+
+- CoT fine-tuning improves reasoning transparency but increases computational complexity.
+- Long reasoning traces significantly increase token generation overhead.
+- Stable QLoRA training requires careful learning rate and gradient stabilization.
+- No-CoT models are computationally cheaper and more numerically stable.
+
+---
+
+## Future Improvements
+
+- Multi-GPU distributed training
+- RLHF alignment
+- Gradio/Streamlit inference UI
+- HuggingFace Spaces deployment
+- Better hallucination detection
+- Medical benchmark evaluation
+- Quantitative reasoning analysis
+
+---
+
+## Disclaimer
 
 This project is intended for research and educational purposes only.
 
 The generated medical responses should not be used as professional medical advice.
 
-Author
+---
+
+## Author
 
 Ayush Kumar Singh
